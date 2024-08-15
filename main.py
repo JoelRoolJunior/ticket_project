@@ -1,14 +1,9 @@
-import tensorflow
-import keras
-import sklearn
-
-from matplotlib import pyplot as plt
-from random import randint
 from glob import glob
 from PIL import Image
 import pandas as pd
 import pytesseract
 import numpy as np
+import timeit
 import cv2
 import re
 
@@ -39,7 +34,7 @@ def get_transportadora(imagem_cinza):
 
 def get_notas_fiscais(imagem_cinza):
     thresh = thresh_otsu(imagem_cinza)
-    blacklist = '][~/\. '
+    blacklist = r'][~/\. '
     config = f'-c tessedit_char_blacklist={blacklist} --psm 6 --oem 3'
     saida = str(pytesseract.image_to_string(255 - thresh, lang='por',config=config)).strip()
     notas_fiscais = saida.split('\n',1)[1]
@@ -47,7 +42,7 @@ def get_notas_fiscais(imagem_cinza):
 
 def get_emissor(imagem_cinza):
     thresh = thresh_otsu(imagem_cinza)
-    config = '-c tessedit_char_blacklist=~/\[]  --psm 6  --oem 3'
+    config = r'-c tessedit_char_blacklist=~/\[]  --psm 6  --oem 3'
     saida = str(pytesseract.image_to_string(255 - thresh, lang='por',config=config)).strip()
     emissor = saida.split('-')[1]
     return emissor
@@ -178,4 +173,7 @@ def main():
     df.to_excel('tickets de pesagem.xlsx',index=False)
 
 if __name__ == "__main__":
+    init = timeit.default_timer()
     main()
+    final = timeit.default_timer()
+    print(f'runtime: {final-init}')
