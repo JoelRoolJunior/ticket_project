@@ -6,6 +6,7 @@ import numpy as np
 import timeit
 import cv2
 import re
+import os
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -81,9 +82,10 @@ def get_info_pesagem(imagem_cinza):
 
 def main():
     
-    paths = glob('ticket_project/anexos/*.jpg')
+    paths = glob('anexos\*.jpg')
     recortes = []
     for i,path in enumerate(paths):
+        print(f'Recortes da imagem {path[-9:-1]}')
         imagem = cv2.imread(path)
         imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
         imagem_binarizada = cv2.adaptiveThreshold(imagem_cinza,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
@@ -121,6 +123,7 @@ def main():
     data = []
     campos = []
     for i,recorte in enumerate(recortes):
+        print(f'Recorte de numero {i}')
         chave_funcao = i%15
         if chave_funcao in colunas: 
             campos.append(mapa[chave_funcao](recorte))
@@ -129,6 +132,7 @@ def main():
                 campos = []
 
     # Criação e Edição do DataFrame
+    print('criando um DataFrame')
     df = pd.DataFrame(data)
     df[6] = pd.to_numeric(df[6], errors='coerce')
     df[7] = pd.to_numeric(df[7], errors='coerce')
@@ -141,6 +145,7 @@ def main():
     df[10] = ''
 
     # Renomeação das colunas
+    print('Editando o DataFrame')
     dict_rename = {
         0:'TICKET',
         1:'PLACA',
@@ -169,7 +174,7 @@ def main():
             'MATERIAL',
             'NOTA FISCAL'
             ]]
-
+    print('DataFrame processado e convertido em planilha.xlsx')
     df.to_excel('tickets de pesagem.xlsx',index=False)
 
 if __name__ == "__main__":

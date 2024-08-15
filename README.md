@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto tem como objetivo automatizar o processo de inserção de dados em uma planilha, coletando as informações diretamente a partir de imagens. Utilizando técnicas de visão computacional, o projeto extrai textos das imagens disponibilizadas  e organiza os dados em uma planilha de maneira eficiente e precisa.
+Este projeto tem como objetivo automatizar o processo de inserção de dados em uma planilha, coletando as informações diretamente a partir de imagens. Utilizando técnicas de visão computacional, o projeto extrai textos das imagens disponibilizadas na pasta ``anexos`` e organiza os dados em uma planilha de maneira eficiente e precisa.
 
 ## Dependências
 
