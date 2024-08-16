@@ -1,8 +1,12 @@
+<div align="center">
+
 # TICKET PROJECT
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white)
 ![Tesseract](https://img.shields.io/badge/TESSERACT-red?style=for-the-badge&logo=opencv)
+
+</div>
 
 ## Descrição
 
@@ -39,13 +43,13 @@ pip install -r requirements.txt
     - Fica a sua escolha se quer instalar apenas para seu usuário ou todos os seus usuários do computador.
     - Abra o nó `Additional language data (download)` e procure pela opção `Portuguese` e marque ela.
 
-    ![Choose Components](doc\passo5.png)
-    ![Choose Components portuguese](doc\passo6.png)
+    ![Choose Components](doc/passo5.png)
+    ![Choose Components portuguese](doc/passo6.png)
 
     <a name="path_tesseract"></a>
     - Copie o caminho que aparece na tela e clique em `next`
 
-    ![Chosse install Location](doc\passo7.png)
+    ![Chosse install Location](doc/passo7.png)
 
     - clique em `Install`
     - espere o download e clique em `next`
@@ -55,7 +59,7 @@ pip install -r requirements.txt
 3. Adicione o diretório de instalação do Tesseract ao `PATH` do sistema.
     -  pesquise por `variaveis de ambiente` no seu computador.
     
-    ![variaveis_de_ambiente](doc\variaveis_de_ambiente.png)
+    ![variaveis_de_ambiente](doc/variaveis_de_ambiente.png)
 
     - Nas variáveis de usuario adicione ao PATH o caminho do tesseract.exe que está na presente na pasta que você [copiou o caminho](#path_tesseract).
 
